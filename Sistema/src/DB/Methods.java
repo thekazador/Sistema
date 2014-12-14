@@ -15,7 +15,7 @@ public class Methods {
 		
 		String driver = "org.apache.derby.jdbc.EmbeddedDriver";
 	    String dbName = "/MyDB";
-	    String dbParam = "create=true"; //la base de datos se creará si no existe todavía
+	    String dbParam = "create=true";
 	    String connectionURL = "jdbc:derby:" + dbName + ";" + dbParam;
 	    Connection conn = null;
 	 
@@ -55,12 +55,16 @@ public class Methods {
             }
             results.close();
 
-	      }  catch (Throwable e)  {
-	        System.out.println("Error al crear la base de datos '" + dbName + "'");
-	        e.printStackTrace();
-	      } finally {
-	        try { conn.close(); }
+	    }
+	    catch (Throwable e)  {
+	    	System.out.println("Error al crear la base de datos '" + dbName + "'");
+	    	e.printStackTrace();
+	    }
+	    finally {
+	    	try {
+	    		// conn.close();
+	    	}
 	        catch (Throwable t){}
-	      }
+	    }
 	}		
 }
