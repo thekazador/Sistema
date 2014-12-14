@@ -63,6 +63,7 @@ public class Methods {
 	    finally {
 	    	try {
 	    		// conn.close();
+	    		// test 2
 	    	}
 	        catch (Throwable t){}
 	    }
