@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Sat Dec 13 04:33:02 GMT-03:00 2014:
- Iniciando instancia a816c00e-014a-4290-a14d-00000000002e de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.1.3 - (1557168): 
-en el directorio de base de datos C:\Users\TheKazador\workspace\Sistema\MyDB con el cargador de clases sun.misc.Launcher$AppClassLoader@73d16e93
+Sun Dec 14 21:36:12 GMT-03:00 2014:
+ Iniciando instancia a816c00e-014a-4b5f-bb6c-00000000002e de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.1.3 - (1557168): 
+en el directorio de base de datos C:\Users\TheKazador\git\Sistema\Sistema\MyDB con el cargador de clases sun.misc.Launcher$AppClassLoader@73d16e93
 Cargado desde file:/C:/Program%20Files/Java/jdk1.8.0_25/db/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_25-b18
-user.dir=C:\Users\TheKazador\workspace\Sistema
+user.dir=C:\Users\TheKazador\git\Sistema\Sistema
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
