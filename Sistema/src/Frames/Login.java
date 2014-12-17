@@ -3,49 +3,59 @@ package Frames;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
-// import javax.swing.JPanel;
 
 public class Login {
 
 	
-	public void paint (Graphics g) {
-	    Graphics2D g2 = (Graphics2D) g;
-	    RoundRectangle2D r = new RoundRectangle2D.Double (5, 5, 480, 480, 20, 20);
-	    g2.draw (r);
-	}
+
 
 	public static void LoginWindow() {
 
-//		JPanel panel = new JPanel();
+		class MyCanvas extends JComponent {
+			private static final long serialVersionUID = 1L;
+			public void paint(Graphics g) {
+	            Graphics2D g2 = (Graphics2D) g.create();
+	            RenderingHints qualityHints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	            qualityHints.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+	            g2.setRenderingHints(qualityHints);
+				RoundRectangle2D r = new RoundRectangle2D.Double (0, 0, 522, 260, 50, 50);
+				g2.setPaint(new Color(0, 0, 0, 30));
+				g2.fill (r);
+				
+				Graphics2D g3 = (Graphics2D) g;
+	            RenderingHints qualityHints2 = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	            qualityHints2.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+	            g3.setRenderingHints(qualityHints2);
+				RoundRectangle2D r2 = new RoundRectangle2D.Double (10, 10, 502, 240, 45, 45);
+				g3.setPaint(new Color(0x3b3b3b));
+				g3.fill (r2);
+			}
+		}
+		
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		JFrame frame = new JFrame("Sistema");
-//		JPanel background = new JPanel();
+		JComponent elfondo = new MyCanvas();
+		frame.add(elfondo);
+
 		MotionPanel move = new MotionPanel(frame);
 
-		move.setBounds(15, 15, 480, 480);
+		move.setBounds(15, 15, 492, 230);
 		move.setBackground(new Color(0, 0, 0, 0));
 
-		frame.setSize(510, 510);
+		frame.setSize(522, 260);
 		frame.setUndecorated(true);
-		frame.setShape(new RoundRectangle2D.Double(5, 5, 500, 500, 20, 20));
+
 		frame.setVisible(true);
-		frame.setBackground(new Color(0, 0, 0, 80));
+		frame.setBackground(new Color(0, 0, 0, 0));
 
-//		frame.getContentPane().add(new paint());
 		frame.add(move);
-
-//		frame.add(panel);
-//		panel.setSize(384, 279);
-//		panel.setOpaque(false);
-//		panel.setBackground(new Color(0, 0, 0, 0));
-		//JFrame.setDefaultLookAndFeelDecorated(true);
-		//frame.getContentPane().setBackground(new Color(0, 0, 0, 50));
-		//frame.setOpacity(0.55f);
-		//com.sun.awt.AWTUtilities.setWindowOpacity(frame, 0.5f);
-		//frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		
 	}
 
 }
