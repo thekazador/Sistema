@@ -3,9 +3,15 @@ package Frames;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -56,29 +62,49 @@ public class Login {
 			}
 		}
 		
-		ImageIcon icon = new ImageIcon("img/line-sep.png");
+		
+
+		
+		//ImageIcon icon = new ImageIcon("img/line-sep.png");
 		
 		JFrame frame = new JFrame();
 		JComponent elfondo = new MyCanvas();
-		JLabel linesep = new JLabel(icon);
+		JLabel linesep = new JLabel();
 		MotionPanel move = new MotionPanel(frame);
 
-        //label.setIcon(new ImageIcon(this.getClass().getResource("images/filename.png"));
-        // ImageIcon(img.class.getResource("/img/line-sep.png")));
-        linesep.setBounds(15, 75, 402, 2);
+		linesep.setBounds(15, 75, 402, 2);		
+		
+        //linesep.setIcon(new ImageIcon(Image.class.getResource("/img/line-sep.png")));
+		
+        //ImageIcon(img.class.getResource("/img/line-sep.png")));
+        
 
 		move.setBounds(15, 15, 492, 230);
 		move.setBackground(new Color(0, 0, 0, 0));
+		
+		//frame.add(elfondo);
+		
+		// start
+		ImageIcon imageIcon = new ImageIcon(Image.class.getResource("/img/line-sep.png")); // load the image to a imageIcon
+		Image image = imageIcon.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(492, 2,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(newimg);  // transform it back
 
+		linesep.setIcon(imageIcon);
+		// end
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(elfondo);
-		frame.add(linesep);
+
 		frame.setSize(522, 260);
 		frame.setUndecorated(true);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-		frame.setBackground(new Color(0, 0, 0, 0));
+		// frame.setBackground(new Color(0, 0, 0, 0));
+		
+		frame.add(linesep);
 		frame.add(move);
+		
+
 		
 	}
 
