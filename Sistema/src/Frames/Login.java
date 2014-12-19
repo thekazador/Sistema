@@ -7,12 +7,19 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
+import java.awt.font.TextAttribute;
 import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import java.awt.FontMetrics;
+
+
+import java.util.HashMap;
+import java.util.Map;
 
 import Main.Main;
 
@@ -61,6 +68,24 @@ public class Login {
 			}
 		}
 		
+		class MyText extends JLabel {
+			private static final long serialVersionUID = 1L;
+
+			public void paint (Graphics g){
+				Graphics2D g2d = (Graphics2D)g;
+			    int x = 0;
+			    int y = 0;
+			    g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+			    Font font = new Font("Tahoma", Font.PLAIN, 13);
+			    Map<TextAttribute, Object> attributes = new HashMap<TextAttribute, Object>();
+			    attributes.put(TextAttribute.TRACKING, 0.2);
+			    Font font2 = font.deriveFont(attributes);
+			    g2d.setFont(font2);
+			    FontMetrics fontMetrics = g2d.getFontMetrics();
+			    g2d.drawString("Usuario: - Clave:", x, y+fontMetrics.getAscent());
+			}
+		}
+		
 		JFrame frame = new JFrame();
 		JComponent elfondo = new MyCanvas();
 		JLabel linesep = new JLabel();
@@ -68,6 +93,12 @@ public class Login {
 		MotionPanel move = new MotionPanel(frame);
 		JLabel boton = new JLabel("INICIO DE SESION", JLabel.LEFT);
 		JLabel ir = new JLabel("IR", JLabel.LEFT);
+		JLabel usertext = new MyText();
+		
+		//usertext.setText("Usuario: ");
+		usertext.setForeground(new Color(0xe9e9e9));
+		usertext.setFont(new Font("Verdana", 0, 14));
+		usertext.setBounds(40, 125, 220, 41);
 
 		linesep.setBounds(10, 75, 410, 2);
 		
@@ -90,6 +121,7 @@ public class Login {
 		frame.add(ir);
 		frame.add(linesep);
 		frame.add(arrow);
+		frame.add(usertext);
 		frame.add(elfondo);
 		
 		// start
